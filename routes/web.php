@@ -11,6 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'AdminController@home')->name('home');
+
+Route::group(['prefix' => 'games'], function () {
+    Route::get('codenames', 'AdminController@home')->name('codenames');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
